@@ -1,8 +1,8 @@
-import os
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import random
 import time
+from os import path
 
 
 class Application:
