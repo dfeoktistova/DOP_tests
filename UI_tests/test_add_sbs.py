@@ -16,7 +16,7 @@ def test_add_sbs(app):
 
 
     #test_id_and_name_sbs_1
-    id_sbs_1 = app.find_elements("//*[@class='1MuiTableCell-root MuiTableCell-body MuiTableCell-alignCenter "
+    id_sbs_1 = app.find_elements("//*[@class='MuiTableCell-root MuiTableCell-body MuiTableCell-alignCenter "
                                  "MuiTableCell-sizeSmall']", 0).text
     name_sbs_1 = app.find_elements("//*[@class='MuiTableCell-root MuiTableCell-body MuiTableCell-alignCenter "
                                  "MuiTableCell-sizeSmall']", 1).text
