@@ -4,7 +4,7 @@ jsonpickle
 requests
 import os
 from selenium import webdriver
-import chromedrivermanager
+import webdriver_manager.chrome
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.keys import Keys
 import random
