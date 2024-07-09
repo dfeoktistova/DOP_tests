@@ -1,7 +1,5 @@
 import os
 from selenium import webdriver
-from webdriver_manager.chrome import ChromeDriverManager
-from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.keys import Keys
 import random
 import time
@@ -10,8 +8,7 @@ import time
 class Application:
 
     def __init__(self):
-        service = Service(executable_path=ChromeDriverManager().install())
-        self.driver = webdriver.Chrome(service=service)
+        self.driver = webdriver.Chrome()
         self.driver.implicitly_wait(3)
         self.driver.set_window_size(1920, 1080)
         self.driver.get('file:///C:/Program%20Files/Cell.Nets/LnsJsEdition/Packages/LnsDop/client/index.html')
