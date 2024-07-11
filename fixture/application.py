@@ -1,10 +1,13 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 import random
 import time
 import os
 import ctypes
 import getpass
+from selenium.webdriver.common.by import By
 
 
 class Application:
@@ -16,7 +19,16 @@ class Application:
         DOP_client = self.find_DOP_client()
         self.driver.set_window_size(width, height)
         self.driver.get(DOP_client)
-        time.sleep(5)
+        #wait = WebDriverWait(self.driver, 15, poll_frequency=1)
+
+        new_content_locator = ("xpath", "//*[text()='Расчёт тепловой карты точностей']")
+        WebDriverWait(self.driver, 15).until(EC.visibility_of_element_located(new_content_locator))
+        time.sleep(1)
+
+
+        #wait.until(EC.visibility_of_element_located(("xpath", "//*[text() = 'Расчёт тепловой карты точностей']")))
+        #time.sleep(5)
+
 
     def get_screeninfo(self):
         user32 = ctypes.windll.user32
@@ -35,7 +47,7 @@ class Application:
                     dop_dir = os.path.join(root, dir)
                     dop_list.append(dop_dir)
         print(dop_list)
-        index_file = f'{dop_list[1]}\index.html'
+        index_file = f'{dop_list[0]}\index.html'
         print(index_file)
         return index_file
 
