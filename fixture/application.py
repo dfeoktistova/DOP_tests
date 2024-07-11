@@ -25,11 +25,6 @@ class Application:
         WebDriverWait(self.driver, 20).until(EC.visibility_of_element_located(new_content_locator))
         time.sleep(5)
 
-
-        #wait.until(EC.visibility_of_element_located(("xpath", "//*[text() = 'Расчёт тепловой карты точностей']")))
-        #time.sleep(5)
-
-
     def get_screeninfo(self):
         user32 = ctypes.windll.user32
         user32.SetProcessDPIAware()
@@ -125,6 +120,20 @@ class Application:
             sbs_positions.append(sbs_position)
         # print(sbs_positions)
         return sbs_positions
+
+    def UI_test_field_positive(self, attribute, test_number):
+        if attribute == 'false':
+            result = f'Тест №{test_number} завершен успешно'
+        else:
+            result = f'Тест №{test_number} завершен с ошибкой'
+        return result
+
+    def UI_test_field_negative(self, attribute, test_number):
+        if attribute == 'true':
+            result = f'Тест №{test_number} завершен успешно'
+        else:
+            result = f'Тест №{test_number} завершен с ошибкой'
+        return result
 
     def destroy(self):
         self.driver.quit()

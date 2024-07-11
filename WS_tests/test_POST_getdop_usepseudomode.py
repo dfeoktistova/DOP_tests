@@ -1,7 +1,7 @@
 import pytest
 from fixture.application import Application
 import requests
-from data.json_data.getdop import getdop_data
+from data.WS.getdop import getdop_data
 
 
 @pytest.fixture
