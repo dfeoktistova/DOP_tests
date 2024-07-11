@@ -3,6 +3,8 @@ from selenium.webdriver.common.keys import Keys
 import random
 import time
 import os
+import ctypes
+import getpass
 
 
 class Application:
@@ -10,9 +12,32 @@ class Application:
     def __init__(self):
         self.driver = webdriver.Chrome()
         self.driver.implicitly_wait(3)
-        self.driver.set_window_size(1920, 1080)
-        self.driver.get('file:///C:/Program%20Files/Cell.Nets/LnsJsEdition/Packages/LnsDop/client/index.html')
+        width, height = self.get_screeninfo()
+        DOP_client = self.find_DOP_client()
+        self.driver.set_window_size(width, height)
+        self.driver.get(DOP_client)
         time.sleep(5)
+
+    def get_screeninfo(self):
+        user32 = ctypes.windll.user32
+        user32.SetProcessDPIAware()
+        width = user32.GetSystemMetrics(0)
+        height = user32.GetSystemMetrics(1)
+        return width, height
+
+    def find_DOP_client(self):
+        user = getpass.getuser()
+        client_dir = f'C:/Users/{user}/AppData/Roaming'
+        dop_list = []
+        for root, dirs, files in os.walk(client_dir):
+            for dir in dirs:
+                if dir.endswith('DopClient'):
+                    dop_dir = os.path.join(root, dir)
+                    dop_list.append(dop_dir)
+        print(dop_list)
+        index_file = f'{dop_list[1]}\index.html'
+        print(index_file)
+        return index_file
 
     def find_elements(self, locator, number):
         element = self.driver.find_elements("xpath", locator)[number]
@@ -30,10 +55,9 @@ class Application:
     def read_test_data_from_file(self, path):
         file_path = os.path.abspath(path)
         with open(file_path, 'r', encoding="UTF-8") as file:
-            #lines = file.readlines()
+            # lines = file.readlines()
             lines = file.read().splitlines()
         return lines
-
 
     def get_attribute_value(self, field, attribute):
         result = field.get_attribute(attribute)
@@ -55,7 +79,6 @@ class Application:
     def switch_pseudo_mode(self):
         pseudo_mode = self.find_elements("//*[@type='checkbox']", 0)
         pseudo_mode.click()
-        time.sleep(3)
 
     def print_WS_response(self, request):
         response_all = request.json()
@@ -80,7 +103,7 @@ class Application:
 
     def random_sbs_positions_count(self):
         sbs_count = random.randint(0, 20)
-        #print(sbs_count)
+        # print(sbs_count)
         sbs_positions = []
         for sbs in range(sbs_count):
             latitude = {'latitude': random.randint(0, 100)}
@@ -88,7 +111,7 @@ class Application:
             altitude = {'altitude': random.randint(0, 100)}
             sbs_position = {**latitude, **longitude, **altitude}
             sbs_positions.append(sbs_position)
-        #print(sbs_positions)
+        # print(sbs_positions)
         return sbs_positions
 
     def destroy(self):
