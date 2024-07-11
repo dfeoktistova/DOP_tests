@@ -22,8 +22,8 @@ class Application:
         #wait = WebDriverWait(self.driver, 15, poll_frequency=1)
 
         new_content_locator = ("xpath", "//*[text()='Расчёт тепловой карты точностей']")
-        WebDriverWait(self.driver, 15).until(EC.visibility_of_element_located(new_content_locator))
-        time.sleep(1)
+        WebDriverWait(self.driver, 20).until(EC.visibility_of_element_located(new_content_locator))
+        time.sleep(5)
 
 
         #wait.until(EC.visibility_of_element_located(("xpath", "//*[text() = 'Расчёт тепловой карты точностей']")))
