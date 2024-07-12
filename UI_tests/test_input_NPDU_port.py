@@ -24,6 +24,7 @@ def test_input_NPDU_port(app):
         result = app.UI_test_field_positive(get_aria_invalid, test_number)
         print(result)
         test_number += 1
+        assert get_aria_invalid == "false", 'Ошибка: Некорректное значение параметра "get_aria_invalid"!'
 
     for data in port_negative_data:
         app.input_data(field_NPDU_port, data)
@@ -31,3 +32,4 @@ def test_input_NPDU_port(app):
         result = app.UI_test_field_negative(get_aria_invalid, test_number)
         print(result)
         test_number += 1
+        assert get_aria_invalid == "true", 'Ошибка: Некорректное значение параметра "get_aria_invalid"!'

@@ -21,6 +21,7 @@ def test_input_points_horizontal(app):
         result = app.UI_test_field_positive(get_aria_invalid, test_number)
         print(result)
         test_number += 1
+        assert get_aria_invalid == "false", 'Ошибка: Некорректное значение параметра "get_aria_invalid"!'
 
     for data in points_negative_data:
         app.input_data(field_horizontal_points, data)
@@ -28,6 +29,7 @@ def test_input_points_horizontal(app):
         result = app.UI_test_field_negative(get_aria_invalid, test_number)
         print(result)
         test_number += 1
+        assert get_aria_invalid == "true", 'Ошибка: Некорректное значение параметра "get_aria_invalid"!'
 
 
 def test_input_points_vertical(app):
@@ -41,6 +43,7 @@ def test_input_points_vertical(app):
         result = app.UI_test_field_positive(get_aria_invalid, test_number)
         print(result)
         test_number += 1
+        assert get_aria_invalid == "false", 'Ошибка: Некорректное значение параметра "get_aria_invalid"!'
 
     for data in points_negative_data:
         app.input_data(field_horizontal_points, data)
@@ -48,5 +51,6 @@ def test_input_points_vertical(app):
         result = app.UI_test_field_negative(get_aria_invalid, test_number)
         print(result)
         test_number += 1
+        assert get_aria_invalid == "true", 'Ошибка: Некорректное значение параметра "get_aria_invalid"!'
 
 
