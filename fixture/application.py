@@ -19,11 +19,8 @@ class Application:
         DOP_client = self.find_DOP_client()
         self.driver.set_window_size(width, height)
         self.driver.get(DOP_client)
-        #wait = WebDriverWait(self.driver, 15, poll_frequency=1)
-
-        new_content_locator = ("xpath", "//*[text()='Расчёт тепловой карты точностей']")
-        WebDriverWait(self.driver, 20).until(EC.visibility_of_element_located(new_content_locator))
-        time.sleep(5)
+        # Ожидание появления элемента на странице (одно для всех)
+        self.driver.implicitly_wait(60)
 
     def get_screeninfo(self):
         user32 = ctypes.windll.user32

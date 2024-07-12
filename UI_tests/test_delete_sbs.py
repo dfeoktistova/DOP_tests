@@ -1,6 +1,7 @@
 import time
 import pytest
 from fixture.application import Application
+import random
 
 
 @pytest.fixture
@@ -30,3 +31,14 @@ def test_delete_sbs_2(app):
     delete_button = app.find_elements("//*[@class='MuiButtonBase-root MuiButton-root MuiButton-text']", 1)
     delete_button.click()
     time.sleep(3)
+
+
+def test_delete_all_sbs(app):
+    count = random.randrange(1, 30)
+    app.add_sbs(count)
+    sbs_checkbox = app.find_elements("//*[@type='checkbox']", 2)
+    sbs_checkbox.click()
+    time.sleep(1)
+    delete_button = app.find_elements("//*[@class='MuiButtonBase-root MuiButton-root MuiButton-text']", 1)
+    delete_button.click()
+    time.sleep(1)
