@@ -129,5 +129,13 @@ class Application:
             result = f'Тест №{test_number} завершен с ошибкой'
         return result
 
+    def IP_generator(self):
+        a = random.randint(0, 255)
+        b = random.randint(0, 255)
+        c = random.randint(0, 255)
+        d = random.randint(0, 255)
+        IP_address = (str(a) + '.' + str(b) + '.' + str(c) + '.' + str(d))
+        return IP_address
+
     def destroy(self):
         self.driver.quit()
