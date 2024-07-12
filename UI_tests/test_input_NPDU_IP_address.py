@@ -12,20 +12,6 @@ def app(request):
     return fixture
 
 
-def positive_test(attribute, test_number):
-    if attribute == 'false':
-        print('\nТест №', test_number, 'завершен успешно')
-    else:
-        print('\nТест №', test_number, 'завершен  с ошибкой')
-
-
-def negative_test(attribute, test_number):
-    if attribute == 'true':
-        print('\nТест №', test_number, 'завершен успешно')
-    else:
-        print('\nТест №', test_number, 'завершен  с ошибкой')
-
-
 def test_input_NPDU_port(app):
     BUTTON_NPDU_SETTINGS = app.find_element("//*[text() = 'Настройки подключения НПДУ']")
     BUTTON_NPDU_SETTINGS.click()
