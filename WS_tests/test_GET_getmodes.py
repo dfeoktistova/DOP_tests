@@ -1,16 +1,11 @@
 import requests
-import pytest
-from fixture.application import Application
+from fixture import application as app
 
 
-@pytest.fixture
-def app(request):
-    fixture = Application()
-    request.addfinalizer(fixture.destroy)
-    return fixture
+getmodes_url = requests.get('http://127.0.0.1:6776/lnsdop/getmodes')
 
 
-def test_getmodes(app):
+def test_getmodes():
     getmodes_url = requests.get('http://127.0.0.1:6776/lnsdop/getmodes')
 
     app.print_WS_response(getmodes_url)

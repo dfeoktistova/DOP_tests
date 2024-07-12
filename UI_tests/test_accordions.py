@@ -1,5 +1,4 @@
 import time
-
 import pytest
 from fixture.application import Application
 from data.UI.IP_address import IP_address_negative_data, IP_address_positive_data

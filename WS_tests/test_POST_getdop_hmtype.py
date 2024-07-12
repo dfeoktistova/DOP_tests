@@ -1,18 +1,11 @@
-import pytest
-from fixture.application import Application
+from fixture import application as app
 import requests
 from data.WS.getdop import getdop_data
 
 
-@pytest.fixture
-def app(request):
-    fixture = Application()
-    request.addfinalizer(fixture.destroy)
-    return fixture
+getdop_url = 'http://127.0.0.1:6776/lnsdop/getdop'
 
-
-def test_post_getdop(app):
-    getdop_url = 'http://127.0.0.1:6776/lnsdop/getdop'
+def test_post_getdop():
 
     # Создаем рандомное количество НБС
     sbs_list = app.random_sbs_positions_count()

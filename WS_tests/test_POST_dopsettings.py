@@ -1,17 +1,8 @@
-import pytest
-from fixture.application import Application
+from fixture import application as app
 import requests
 import random
 
-
-@pytest.fixture
-def app(request):
-    fixture = Application()
-    request.addfinalizer(fixture.destroy)
-    return fixture
-
-
-def test_post_dopsettings_autosendrdmp_True(app):
+def test_post_dopsettings_autosendrdmp_True():
 
     dopsettings_data_autosendrdmp_True = {
                             "autosendrdmp": True,
@@ -33,7 +24,7 @@ def test_post_dopsettings_autosendrdmp_True(app):
     assert visibleradiuskm_request == visibleradiuskm_response, 'Ошибка: Некорректное значение параметра visibleradiuskm в ответе'
 
 
-def test_post_dopsettings_autosendrdmp_False(app):
+def test_post_dopsettings_autosendrdmp_False():
 
     dopsettings_data_autosendrdmp_True = {
                             "autosendrdmp": False,

@@ -1,22 +1,13 @@
 import random
 from data.UI.IP_address import IP_address_positive_data, IP_address_negative_data
-import pytest
-from fixture.application import Application
+from fixture import application as app
 import requests
 import string
 
 
-@pytest.fixture
-def app(request):
-    fixture = Application()
-    request.addfinalizer(fixture.destroy)
-    return fixture
-
-
 rdmpconnection_url = 'http://127.0.0.1:6776/lnsdop/rdmpconnection'
 
-
-def test_rdmpconnection_1(app):
+def test_rdmpconnection_1():
     rdmpconnection_data = {
         "address": app.IP_generator(),
         "port": random.randrange(1, 65535),
@@ -42,7 +33,7 @@ def test_rdmpconnection_1(app):
     assert response_name == rdmpconnection_data['name'], "Ошибка: В ответе получено некорректное имя"
 
 
-def test_rdmpconnection_2(app):
+def test_rdmpconnection_2():
     rdmpconnection_data = {
         "address": random.choice(IP_address_positive_data),
         "port": random.randrange(1, 65535),
@@ -60,7 +51,7 @@ def test_rdmpconnection_2(app):
     assert response_name == rdmpconnection_data['name'], "Ошибка: В ответе получено некорректное имя"
 
 
-def test_rdmpconnection_3(app):
+def test_rdmpconnection_3():
     rdmpconnection_data = {
         "address": random.choice(IP_address_negative_data),
         "port": random.randrange(1, 65535),
