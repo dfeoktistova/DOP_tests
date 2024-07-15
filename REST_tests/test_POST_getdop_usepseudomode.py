@@ -1,6 +1,6 @@
 from fixture import application as app
 import requests
-from data.WS.getdop import getdop_data
+from data.REST.getdop import getdop_data
 
 getdop_url = 'http://127.0.0.1:6776/lnsdop/getdop'
 
