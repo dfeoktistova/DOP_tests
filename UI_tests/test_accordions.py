@@ -16,12 +16,10 @@ def test_accordions(app):
     # test accordion 1
     CHAPTER_1 = app.find_element("//*[text() = 'Настройки подключения НПДУ']")
     CHAPTER_1.click()
-    time.sleep(2)
     BUTTON_NPDU_ACCORDION_BEFORE = app.find_elements("//*[@class='MuiButtonBase-root MuiAccordionSummary-root jss49 Mui-expanded jss48']", 0)
     aria_expanded_1_before = app.get_attribute_value(BUTTON_NPDU_ACCORDION_BEFORE, 'aria-expanded')
     assert aria_expanded_1_before == 'true', "Ошибка: Аккордеон не открыт"
     BUTTON_NPDU_ACCORDION_BEFORE.click()
-    time.sleep(2)
     BUTTON_NPDU_ACCORDION_AFTER = app.find_elements("//*[@class='MuiButtonBase-root MuiAccordionSummary-root jss49']", 0)
     aria_expanded_1_after = app.get_attribute_value(BUTTON_NPDU_ACCORDION_AFTER, 'aria-expanded')
     assert aria_expanded_1_after == 'false', "Ошибка: Аккордеон не закрыт"
@@ -31,7 +29,6 @@ def test_accordions(app):
     aria_expanded_2_before = app.get_attribute_value(BUTTON_SBS_LIST_ACCORDION_BEFORE, 'aria-expanded')
     assert aria_expanded_2_before == 'true', "Ошибка: Аккордеон не открыт"
     BUTTON_SBS_LIST_ACCORDION_BEFORE.click()
-    time.sleep(2)
     BUTTON_SBS_LIST_ACCORDION_AFTER = app.find_elements("//*[@class='MuiButtonBase-root MuiAccordionSummary-root jss49']",0)
     aria_expanded_2_after = app.get_attribute_value(BUTTON_SBS_LIST_ACCORDION_AFTER, 'aria-expanded')
     assert aria_expanded_2_after == 'false', "Ошибка: Аккордеон не закрыт"
@@ -41,7 +38,6 @@ def test_accordions(app):
     aria_expanded_3_before = app.get_attribute_value(BUTTON_DOP_PARAMS_ACCORDION_BEFORE, 'aria-expanded')
     assert aria_expanded_3_before == 'true', "Ошибка: Аккордеон не открыт"
     BUTTON_DOP_PARAMS_ACCORDION_BEFORE.click()
-    time.sleep(2)
     BUTTON_DOP_PARAMS_ACCORDION_AFTER = app.find_elements("//*[@class='MuiButtonBase-root MuiAccordionSummary-root jss49']",0)
     aria_expanded_3_after = app.get_attribute_value(BUTTON_DOP_PARAMS_ACCORDION_AFTER, 'aria-expanded')
     assert aria_expanded_3_after == 'false', "Ошибка: Аккордеон не закрыт"
@@ -51,7 +47,6 @@ def test_accordions(app):
     aria_expanded_4_before = app.get_attribute_value(BUTTON_CONTROL_MODULE_ACCORDION_BEFORE, 'aria-expanded')
     assert aria_expanded_4_before == 'true', "Ошибка: Аккордеон не открыт"
     BUTTON_CONTROL_MODULE_ACCORDION_BEFORE.click()
-    time.sleep(2)
     BUTTON_CONTROL_MODULE_ACCORDION_AFTER = app.find_elements("//*[@class='MuiButtonBase-root MuiAccordionSummary-root jss49']",0)
     aria_expanded_4_after = app.get_attribute_value(BUTTON_CONTROL_MODULE_ACCORDION_AFTER, 'aria-expanded')
     assert aria_expanded_4_after == 'false', "Ошибка: Аккордеон не закрыт"
